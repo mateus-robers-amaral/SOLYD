@@ -7,7 +7,7 @@ colecao = []
 loop = print("Digite o(s) número(s) que deseja incluir.")
 while num < coletar:
     loop1 = float(input("-> "))
-    colecao.append(coletar)
+    colecao.append(loop1)
     num += 1
 
 def maior():
