@@ -1,1 +1,1 @@
-# SOLYD
+# Este é um curso da Solyd de introdução a python, alguns exercícios, algumas provas, etc. Espero que goste :)
