@@ -10,6 +10,7 @@ class Cliente():
         self.idade = idade
         self.conta = conta
     
+class Conta():
     def criar_conta(self, conta):
         self.conta = random.randint(10000000000,99999999999)
         print(conta)
