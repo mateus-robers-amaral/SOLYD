@@ -14,5 +14,7 @@ class Cliente():
         self.conta = random.randint(10000000000,99999999999)
         print(conta)
 
-    def acessar_conta(self, ):
+    # def acessar_conta(self, conta):
+    #     for i in contas:
+
 
