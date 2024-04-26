@@ -6,5 +6,3 @@ resp = int(input("-> "))
 
 if resp == 1:
         cadastro = Cliente(input("Qual o seu nome?\n-> "), input("Digite seu CPF:\n-> "), input("Qual a sua idade?\n-> "), criar_conta())
-elif resp == 2:
-        acessar_conta()
