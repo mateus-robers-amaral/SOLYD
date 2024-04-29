@@ -1,4 +1,4 @@
-from SOLYD.banco.bank import Conta, salvar_conta
+from bank import Conta
 import random
 
 print("[1] Criar nova conta\n[2] Acessar conta já existente")
@@ -28,6 +28,8 @@ if resp == 1:
                         if idade < 18:
                                 print('A idade mínima para criar uma conta é 18 anos.')
                                 exit()
+                        else:
+                                break
 
                 except ValueError:
                         print('Digite apenas números')
