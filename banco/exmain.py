@@ -1,4 +1,4 @@
-from exercicio1 import Cliente, Conta
+from SOLYD.banco.exercicio1 import Cliente, Conta
 import random
 
 print("Olá, selecione a opção que desejas:\n[1] Criar nova conta\n[2] Acessar conta já existente")
