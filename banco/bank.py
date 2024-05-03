@@ -41,7 +41,7 @@ class Cliente():
                         print('Digite apenas números')
                         continue
                 
-        return [nome, cpf, idade]
+        return [nome.title(), cpf, idade]
 
     def criar_conta(self):
         
@@ -50,6 +50,7 @@ class Cliente():
                leitor_csv = csv.reader(arquivo)
                for linha in leitor_csv:
                       num_conta += 1
+        print(f"O número da sua conta é {num_conta}.")
                                       
 
         nova_conta = [self.nome, self.cpf, self.idade, num_conta]
@@ -62,10 +63,8 @@ class Cliente():
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
             leitor_csv = csv.reader(arquivo)
             for linha in leitor_csv:
-                print(linha[3])
-                print()
                 if int(linha[3]) == conta:
-                    print(f"Olá {linha[0]}\ncpf: {linha[1]}\nidade: {linha[2]}")
+                    print(f"Olá {linha[0]}\nCPF: {linha[1]}\nidade: {linha[2]} anos\nSaldo: ")
                     return
             print("Conta não existente")
                         
