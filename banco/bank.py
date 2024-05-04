@@ -5,10 +5,11 @@ e cada conta possui um client, um saldo, limite, sacar, depositar e consultar sa
 import csv
 
 class Cliente():
-    def __init__(self, nome, cpf, idade):
+    def __init__(self, nome, cpf, idade, saldo):
         self.nome = nome
         self.cpf = cpf
         self.idade = idade
+        self.saldo = saldo
     
     def validar():
         while True:
@@ -41,7 +42,7 @@ class Cliente():
                         print('Digite apenas números')
                         continue
                 
-        return [nome.title(), cpf, idade]
+        return [nome.title(), cpf, idade, 100]
 
     def criar_conta(self):
         
@@ -68,7 +69,23 @@ class Cliente():
                     return
             print("Conta não existente")
                         
-                      
-                                      
+def saque():
+        sacar = int(input("Quanto deseja sacar?\n-> "))
+        with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
+            leitor_csv = csv.reader(arquivo)
+            for linha in leitor_csv:
+                if int(linha[4]) >= sacar:
+                        print("Saque efetuado com sucesso!")
+                        saldo -= sacar
+                        return
+            print("Saldo insuficiente.")
 
-# def salvar_conta():
+def depositar():
+        deposito = int(input("Quanto deseja depositar?\n-> "))
+        with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
+            leitor_csv = csv.reader(arquivo)
+            for linha in leitor_csv:
+                print("Saque efetuado com sucesso!")
+                saldo += deposito
+                return
+            
