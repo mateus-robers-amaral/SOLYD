@@ -74,6 +74,7 @@ class Cliente():
                         if operacao == 1:
                               saque()
                         elif operacao == 2:
+                        # colocar o input aqui?
                               depositar()
                         # elif operacao == 3:
                         #       transferir()
@@ -94,7 +95,7 @@ def saque():
                                 return
                 print("Saldo insuficiente.")
 
-def depositar():
+def depositar(saldo):
         deposito = int(input("Quanto deseja depositar?\n-> "))
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
                 leitor_csv = csv.reader(arquivo)
