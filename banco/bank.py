@@ -41,20 +41,20 @@ class Cliente():
                 except ValueError:
                         print('Digite apenas números')
                         continue
+        saldo = 0
                 
         return [nome.title(), cpf, idade, saldo]
 
     def criar_conta(self):
         
         num_conta = 1000000
-        saldo = 0
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
                leitor_csv = csv.reader(arquivo)
                for linha in leitor_csv:
                       num_conta += 1
-        print(f"O número da sua conta é {num_conta}.\nSeu saldo inicial é R$ {saldo}.")
+        print(f"O número da sua conta é {num_conta}.\nSeu saldo inicial é R$ {self.saldo}.")
                                       
-        nova_conta = [self.nome, self.cpf, self.idade, num_conta, saldo]
+        nova_conta = [self.nome, self.cpf, self.idade, num_conta, self.saldo]
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='a', newline="") as arquivo:
             escritor_csv = csv.writer(arquivo)
             escritor_csv.writerow(nova_conta)
@@ -65,7 +65,7 @@ class Cliente():
             leitor_csv = csv.reader(arquivo)
             for linha in leitor_csv:
                 if int(linha[3]) == conta:
-                    print(f"Olá {linha[0]}\nCPF: {linha[1]}\nidade: {linha[2]} anos\nSaldo: ")
+                    print(f"Olá {linha[0]}\nCPF: {linha[1]}\nidade: {linha[2]} anos\nSaldo: {linha[4]}")
                     print("Deseja realizar alguma operação?\n[1] Sim\n[2] Não")
                     opcao = int(input("-> "))
                     if opcao == 1:
@@ -77,6 +77,8 @@ class Cliente():
                               depositar()
                         # elif operacao == 3:
                         #       transferir()
+                        else:
+                               print("Escolha uma opção válida.")
                         
                     return
             print("Conta não existente")
