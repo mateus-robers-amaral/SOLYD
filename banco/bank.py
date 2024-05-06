@@ -95,13 +95,14 @@ def saque():
                                 return
                 print("Saldo insuficiente.")
 
-def depositar(saldo):
+def depositar():
         deposito = int(input("Quanto deseja depositar?\n-> "))
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
                 leitor_csv = csv.reader(arquivo)
                 for linha in leitor_csv:
-                        print("Saque efetuado com sucesso!")
+                        saldo = int(linha[4])
                         saldo += deposito
-                        return
-            
+                        print("Depósito efetuado com sucesso!")
+                        return saldo
+                print(f"Novo saldo: {saldo}")
 # def transferir():
