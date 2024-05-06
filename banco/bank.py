@@ -42,19 +42,19 @@ class Cliente():
                         print('Digite apenas números')
                         continue
                 
-        return [nome.title(), cpf, idade, 100]
+        return [nome.title(), cpf, idade, saldo]
 
     def criar_conta(self):
         
         num_conta = 1000000
+        saldo = 0
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
                leitor_csv = csv.reader(arquivo)
                for linha in leitor_csv:
                       num_conta += 1
-        print(f"O número da sua conta é {num_conta}.")
+        print(f"O número da sua conta é {num_conta}.\nSeu saldo inicial é R$ {saldo}.")
                                       
-
-        nova_conta = [self.nome, self.cpf, self.idade, num_conta]
+        nova_conta = [self.nome, self.cpf, self.idade, num_conta, saldo]
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='a', newline="") as arquivo:
             escritor_csv = csv.writer(arquivo)
             escritor_csv.writerow(nova_conta)
@@ -66,26 +66,39 @@ class Cliente():
             for linha in leitor_csv:
                 if int(linha[3]) == conta:
                     print(f"Olá {linha[0]}\nCPF: {linha[1]}\nidade: {linha[2]} anos\nSaldo: ")
+                    print("Deseja realizar alguma operação?\n[1] Sim\n[2] Não")
+                    opcao = int(input("-> "))
+                    if opcao == 1:
+                        print("Qual operação deseja realizar?\n[1] Sacar\n[2] Depositar\n[3] Transferir")
+                        operacao = int(input("-> "))
+                        if operacao == 1:
+                              saque()
+                        elif operacao == 2:
+                              depositar()
+                        # elif operacao == 3:
+                        #       transferir()
+                        
                     return
             print("Conta não existente")
-                        
+        
 def saque():
         sacar = int(input("Quanto deseja sacar?\n-> "))
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
-            leitor_csv = csv.reader(arquivo)
-            for linha in leitor_csv:
-                if int(linha[4]) >= sacar:
-                        print("Saque efetuado com sucesso!")
-                        saldo -= sacar
-                        return
-            print("Saldo insuficiente.")
+                leitor_csv = csv.reader(arquivo)
+                for linha in leitor_csv:
+                        if int(linha[4]) >= sacar:
+                                print("Saque efetuado com sucesso!")
+                                saldo -= sacar
+                                return
+                print("Saldo insuficiente.")
 
 def depositar():
         deposito = int(input("Quanto deseja depositar?\n-> "))
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
-            leitor_csv = csv.reader(arquivo)
-            for linha in leitor_csv:
-                print("Saque efetuado com sucesso!")
-                saldo += deposito
-                return
+                leitor_csv = csv.reader(arquivo)
+                for linha in leitor_csv:
+                        print("Saque efetuado com sucesso!")
+                        saldo += deposito
+                        return
             
+# def transferir():

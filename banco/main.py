@@ -6,10 +6,11 @@ resp = int(input("-> "))
 
 if resp == 1:
         validacao = Cliente.validar()
-        cliente1 = Cliente(validacao[0], validacao[1], validacao[2])
+        cliente1 = Cliente(validacao[0], validacao[1], validacao[2], validacao[3])
         cliente1.criar_conta()
 
 elif resp == 2:
         Cliente.acessar_conta()
+        
 
 # adicionar funções de saque, transferencia e extrato
