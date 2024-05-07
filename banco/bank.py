@@ -72,10 +72,10 @@ class Cliente():
                         print("Qual operação deseja realizar?\n[1] Sacar\n[2] Depositar\n[3] Transferir")
                         operacao = int(input("-> "))
                         if operacao == 1:
-                              saque()
+                              saque(conta)
                         elif operacao == 2:
                         # colocar o input aqui?
-                              depositar()
+                              depositar(conta)
                         # elif operacao == 3:
                         #       transferir()
                         else:
@@ -86,7 +86,7 @@ class Cliente():
         
 def saque():
         sacar = int(input("Quanto deseja sacar?\n-> "))
-        with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
+        with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='w') as arquivo:
                 leitor_csv = csv.reader(arquivo)
                 for linha in leitor_csv:
                         if int(linha[4]) >= sacar:
@@ -95,14 +95,19 @@ def saque():
                                 return
                 print("Saldo insuficiente.")
 
-def depositar():
+def depositar(conta):
         deposito = int(input("Quanto deseja depositar?\n-> "))
         with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='r') as arquivo:
                 leitor_csv = csv.reader(arquivo)
-                for linha in leitor_csv:
-                        saldo = int(linha[4])
-                        saldo += deposito
-                        print("Depósito efetuado com sucesso!")
+                with open("/Users/rober/Desktop/Estudos/SOLYD/banco/contas.csv", mode='w') as arquivo:
+                        escritor_csv = csv.writer(arquivo)
+                        for linha_leitor in leitor_csv:
+                                if linha_leitor[3] == conta:
+                                        for linha_escritor in escritor_csv:
+                                                saldo = int(linha_escritor[4])
+                                                saldo += deposito
+                                print("Depósito efetuado com sucesso!")
                         return saldo
-                print(f"Novo saldo: {saldo}")
+        print(f"Novo saldo: {saldo}")
+
 # def transferir():
