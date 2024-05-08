@@ -107,7 +107,6 @@ def depositar(conta):
                                                 saldo = int(linha_escritor[4])
                                                 saldo += deposito
                                 print("Depósito efetuado com sucesso!")
-                        return saldo
-        print(f"Novo saldo: {saldo}")
+                        print(f"Novo saldo: {saldo}")
 
 # def transferir():
