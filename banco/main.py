@@ -12,5 +12,3 @@ if resp == 1:
 elif resp == 2:
         Cliente.acessar_conta()
         
-
-# adicionar funções de saque, transferencia e extrato
